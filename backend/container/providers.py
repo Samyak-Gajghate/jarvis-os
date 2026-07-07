@@ -2,6 +2,7 @@ from backend.container.container import Container
 from backend.runtime.runtime import Runtime
 from backend.runtime.model_manager.manager import ModelManager
 from backend.runtime.model_manager.providers.ollama import OllamaProvider
+from backend.ai.runtime import AIRuntime
 
 
 def register_core_services(container: Container) -> None:
@@ -14,3 +15,7 @@ def register_core_services(container: Container) -> None:
     model_manager.register(provider)
     model_manager.default_provider = "ollama"
     container.register("model_manager", model_manager)
+    
+    #Register AI
+    ai_runtime = AIRuntime()
+    container.register("ai_runtime", ai_runtime)

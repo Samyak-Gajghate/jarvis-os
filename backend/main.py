@@ -7,6 +7,7 @@ from backend.common.constants import APP_NAME, APP_VERSION
 from backend.config.logging import setup_logging
 from backend.container.dependencies import container
 from backend.api.v1.models import router as model_router
+from backend.api.v1.chat import router as chat_router
 
 
 setup_logging()
@@ -37,6 +38,12 @@ app.include_router(
     model_router,
     prefix="/api/v1/models",
     tags=["Models"],
+)
+
+app.include_router(
+    chat_router,
+    prefix="/api/v1/chat",
+    tags=["Chat"],
 )
 
 
