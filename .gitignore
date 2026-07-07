@@ -1,1 +1,31 @@
+# Environments
 .venv/
+env/
+venv/
+ENV/
+
+# Python bytecode and caches
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Packaging and builds
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# Environment variables and local settings
+.env
+.env.*
+!.env.example
+
+# IDEs, editors and OS files
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
