@@ -5,11 +5,11 @@ from fastapi import FastAPI
 from backend.api.v1.health import router as health_router
 from backend.common.constants import APP_NAME, APP_VERSION
 from backend.config.logging import setup_logging
-from backend.runtime.runtime import Runtime
+from backend.container.dependencies import container
 
 setup_logging()
 
-runtime = Runtime()
+runtime = container.resolve("runtime")
 
 
 @asynccontextmanager
