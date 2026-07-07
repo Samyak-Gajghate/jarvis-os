@@ -5,6 +5,7 @@ from backend.runtime.model_manager.providers.ollama import OllamaProvider
 from backend.ai.runtime import AIRuntime
 from backend.planner.planner import Planner
 from backend.agents.dispatcher import TaskDispatcher
+from backend.agents.tools.browser.tool import BrowserTool
 
 
 def register_core_services(container: Container) -> None:
@@ -29,3 +30,7 @@ def register_core_services(container: Container) -> None:
     #Register Dispatcher
     dispatcher = TaskDispatcher()
     container.register("dispatcher", dispatcher)
+
+    # Register BrowserTool
+    browser_tool = BrowserTool()
+    container.register("browser_tool", browser_tool)

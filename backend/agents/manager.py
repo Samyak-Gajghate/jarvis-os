@@ -5,6 +5,7 @@ from backend.agents.schemas.request import AgentRequest
 from backend.agents.schemas.response import AgentResponse
 from backend.planner.schemas.task import PlannedTask
 from backend.agents.exceptions import AgentNotFoundError
+from backend.agents.builtin.research import ResearchAgent
 
 
 class AgentManager:
@@ -13,6 +14,7 @@ class AgentManager:
     def __init__(self):
         self.registry = AgentRegistry()
         self.registry.register(GeneralAgent())
+        self.registry.register(ResearchAgent())
 
     def register(self, agent: Agent) -> None:
         self.registry.register(agent)
