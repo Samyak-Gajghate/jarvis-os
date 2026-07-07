@@ -17,6 +17,7 @@ class AIRuntime:
         user_input: str,
         session_id: str ,
         template: str = "assistant",
+        temperature: float = 0.3,
     ) -> AIResponse:
 
         prompt = self.prompts.build_prompt(
@@ -45,7 +46,8 @@ class AIRuntime:
                     {history}
 
                     Assistant:
-                """
+                """,
+                temperature=temperature,
             )
         )
 
