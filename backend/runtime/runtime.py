@@ -9,6 +9,7 @@ from backend.events.schemas.runtime import (
     RuntimeStopped,
 )
 
+
 logger = logging.getLogger(__name__)
 
 
@@ -27,6 +28,11 @@ class Runtime:
         self.state = RuntimeState.STARTING
 
         await self.lifecycle.startup()
+        # Initialize the model manager
+        from backend.container.dependencies import container
+        model_manager = container.resolve("model_manager")
+        await model_manager.initialize()
+
         await self.events.publish(RuntimeStarted())
         self.state = RuntimeState.RUNNING
 
@@ -37,6 +43,10 @@ class Runtime:
 
         self.state = RuntimeState.STOPPING
         await self.events.publish(RuntimeStopped())
+        # Shutdown the model manager
+        from backend.container.dependencies import container
+        model_manager = container.resolve("model_manager")
+        await model_manager.shutdown()
         await self.lifecycle.shutdown()
 
         self.state = RuntimeState.STOPPED

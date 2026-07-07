@@ -10,6 +10,9 @@ class Settings(BaseSettings):
     host: str = "127.0.0.1"
     port: int = 8000
 
+    ollama_host: str = "http://localhost:11434"
+    ollama_model: str = "llama3"
+
     class Config:
         env_file = ".env"
 

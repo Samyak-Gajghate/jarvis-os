@@ -3,6 +3,7 @@ uvicorn[standard]
 pydantic>=2.11
 pydantic-settings
 python-dotenv
+httpx>=0.28
 
 [dev]
 pytest

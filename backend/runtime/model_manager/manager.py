@@ -14,6 +14,14 @@ class ModelManager:
     def register(self, provider: ModelProvider):
         self.registry.register(provider)
 
+    async def initialize(self):
+        for provider in self.registry.all():
+            await provider.initialize()
+
+    async def shutdown(self):
+        for provider in self.registry.all():
+            await provider.shutdown()
+
     async def generate(
         self,
         request: ModelRequest,
