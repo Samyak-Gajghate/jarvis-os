@@ -5,8 +5,8 @@ from backend.container.dependencies import container
 
 
 class ChatRequest(BaseModel):
+    session_id: str
     message: str
-
 
 router = APIRouter()
 
@@ -14,4 +14,7 @@ router = APIRouter()
 @router.post("/")
 async def chat(request: ChatRequest):
     runtime = container.resolve("ai_runtime")
-    return await runtime.generate(request.message)
+    return await runtime.generate(
+        user_input=request.message,
+        session_id=request.session_id,
+    )
