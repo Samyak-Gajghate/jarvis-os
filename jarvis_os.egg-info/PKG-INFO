@@ -1,0 +1,536 @@
+Metadata-Version: 2.4
+Name: jarvis-os
+Version: 0.1.0
+Summary: AI Native Operating System
+Author: Samyak Gajghate
+License-Expression: MIT
+Requires-Python: >=3.12
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: fastapi
+Requires-Dist: uvicorn[standard]
+Requires-Dist: pydantic>=2.11
+Requires-Dist: pydantic-settings
+Requires-Dist: python-dotenv
+Provides-Extra: dev
+Requires-Dist: pytest; extra == "dev"
+Requires-Dist: pytest-asyncio; extra == "dev"
+Requires-Dist: httpx; extra == "dev"
+Requires-Dist: black; extra == "dev"
+Requires-Dist: ruff; extra == "dev"
+Requires-Dist: mypy; extra == "dev"
+Requires-Dist: pre-commit; extra == "dev"
+Dynamic: license-file
+
+# Jarvis OS
+
+> **An AI-Native Operating System where Artificial Intelligence is the Operating System, not an Application.**
+
+---
+
+# Vision
+
+Jarvis OS aims to redefine human-computer interaction by making Artificial Intelligence the primary interface to the operating system.
+
+Instead of opening applications, searching through folders, and manually performing repetitive tasks, users simply describe their goals in natural language. Jarvis understands context, remembers previous interactions, plans complex workflows, and executes them across the entire system.
+
+The long-term vision is to create a fully open-source, privacy-first, AI-native operating system that is capable of:
+
+- Understanding voice, text, images, and the desktop.
+- Maintaining persistent long-term memory.
+- Learning user preferences over time.
+- Automating complex workflows.
+- Coordinating specialized AI agents.
+- Operating completely offline whenever possible.
+- Remaining modular, secure, and extensible.
+
+Jarvis OS is inspired by the intelligence and usability of Marvel's J.A.R.V.I.S., while being built entirely on real-world, open-source technologies.
+
+---
+
+# Goals
+
+## Primary Goals
+
+- Build a fully open-source AI-native operating system.
+- Eliminate dependency on paid APIs and proprietary AI services.
+- Provide a unified AI runtime for desktop computing.
+- Make AI the primary method of interacting with the computer.
+- Create a modular architecture that anyone can extend.
+- Keep the entire system privacy-first and local-first.
+
+---
+
+## Technical Goals
+
+- Local LLM execution
+- Multi-Agent Architecture
+- Persistent Memory System
+- Personal Knowledge Base
+- Computer Vision
+- Voice Assistant
+- Desktop Automation
+- Workflow Automation
+- Plugin Ecosystem
+- Mobile Integration
+- AI Desktop Environment
+
+---
+
+## User Experience Goals
+
+Instead of:
+
+- Opening Chrome
+- Searching Google
+- Opening VS Code
+- Finding Files
+- Opening Excel
+
+Users simply say:
+
+> "Prepare tomorrow's meeting presentation using last month's sales report."
+
+Jarvis plans and executes the entire workflow.
+
+---
+
+# High-Level Architecture
+
+```text
+                       User
+                         │
+        ┌────────────────┼────────────────┐
+        │                │                │
+     Voice            Keyboard         Camera
+        │                │                │
+        └────────────────┼────────────────┘
+                         │
+                 Multi-Modal Input Layer
+                         │
+                         ▼
+                 Context Engine
+                         │
+                         ▼
+              Planner / Reasoning Engine
+                         │
+      ┌──────────────────┼──────────────────┐
+      │                  │                  │
+  Memory Engine     Vision Engine     Knowledge Base
+      │                  │                  │
+      └──────────────────┼──────────────────┘
+                         │
+                 Multi-Agent Runtime
+                         │
+ ┌──────────┬──────────┬──────────┬──────────┐
+ │          │          │          │          │
+Voice    Browser     Desktop     Code    Automation
+Agent     Agent       Agent      Agent      Agent
+ │          │          │          │          │
+ └──────────┴──────────┴──────────┴──────────┘
+                         │
+                    Tool Runtime
+                         │
+ ┌──────────────────────────────────────────────────────┐
+ │ File System │ Browser │ Git │ Docker │ Terminal │ IDE │
+ └──────────────────────────────────────────────────────┘
+                         │
+                 Linux Operating System
+                         │
+                     Hardware
+```
+
+---
+
+# Planned Features
+
+## AI Runtime
+
+- Local AI model execution
+- Multi-model routing
+- Local inference
+- Prompt management
+- Session management
+- Streaming responses
+
+---
+
+## Voice Intelligence
+
+- Wake word detection
+- Offline Speech-to-Text
+- Offline Text-to-Speech
+- Continuous conversation
+- Speaker recognition
+- Multi-language support
+
+---
+
+## Computer Vision
+
+- Object Detection
+- Semantic Segmentation
+- OCR
+- Screen OCR
+- Face Recognition (Optional)
+- Image Captioning
+- Depth Estimation
+- UI Understanding
+- Camera Understanding
+- Desktop Understanding
+
+---
+
+## Personal Knowledge Base
+
+Jarvis continuously indexes:
+
+- Books
+- Notes
+- PDFs
+- Emails
+- Chats
+- Videos
+- Audio
+- Research Papers
+- Projects
+- Git Repositories
+- Browser History
+- Calendar
+- Contacts
+- Photos
+- Screenshots
+- Source Code
+
+Everything becomes searchable through natural language.
+
+---
+
+## Memory System
+
+### Semantic Memory
+
+- Preferences
+- Contacts
+- Devices
+- Projects
+
+### Episodic Memory
+
+- Conversations
+- Meetings
+- Sessions
+- Actions
+
+### Procedural Memory
+
+- Coding habits
+- Automation
+- Workflows
+
+### Working Memory
+
+- Clipboard
+- Open windows
+- Current task
+- Active project
+
+---
+
+## Multi-Agent System
+
+Core agents include:
+
+- Planner Agent
+- Voice Agent
+- Vision Agent
+- Browser Agent
+- Desktop Agent
+- Memory Agent
+- Knowledge Agent
+- Coding Agent
+- Research Agent
+- Automation Agent
+- Calendar Agent
+- Email Agent
+- Security Agent
+- Learning Agent
+- Media Agent
+- Home Agent
+
+---
+
+## Context Engine
+
+Real-time awareness of:
+
+- Running applications
+- Active window
+- Browser tabs
+- Clipboard
+- Notifications
+- Calendar
+- Meetings
+- Battery
+- CPU/GPU usage
+- Connected devices
+- Current project
+
+---
+
+## Automation Engine
+
+Natural language workflow automation.
+
+Example:
+
+> "Every Monday summarize my GitHub issues and email the team."
+
+---
+
+## Desktop Automation
+
+- File management
+- Browser control
+- Terminal execution
+- IDE integration
+- Office automation
+- Window management
+
+---
+
+## AI Desktop Environment
+
+- AI Launcher
+- Universal Search
+- Floating Assistant
+- Smart Notifications
+- Context Sidebar
+- Activity Timeline
+- Agent Dashboard
+
+---
+
+## Plugin Ecosystem
+
+- Agent SDK
+- Plugin SDK
+- Tool SDK
+- Community Marketplace
+
+---
+
+## Mobile Companion
+
+- Notification Sync
+- Clipboard Sync
+- Remote Commands
+- Device Authentication
+- File Transfer
+
+---
+
+## Security & Privacy
+
+- Local-first execution
+- Offline AI support
+- Encrypted memory
+- Permission system
+- Sandboxed agents
+- Signed plugins
+- Audit logs
+- User-controlled memory
+
+---
+
+# Development Roadmap
+
+## Phase 1 — Foundation
+
+- Project setup
+- Documentation
+- Repository structure
+- Development environment
+
+---
+
+## Phase 2 — Core Runtime
+
+- AI runtime
+- Ollama integration
+- Conversation engine
+- Tool execution
+- Model management
+
+---
+
+## Phase 3 — Voice System
+
+- Wake word
+- Speech recognition
+- Speech synthesis
+- Voice interaction
+
+---
+
+## Phase 4 — Memory Engine
+
+- Semantic memory
+- Episodic memory
+- Procedural memory
+- Working memory
+
+---
+
+## Phase 5 — Personal Knowledge Base
+
+- Document indexing
+- Embeddings
+- Vector search
+- Knowledge graph
+- Natural language search
+
+---
+
+## Phase 6 — Computer Vision
+
+- Vision orchestrator
+- OCR
+- Screen understanding
+- Desktop perception
+- Camera perception
+
+---
+
+## Phase 7 — Context Engine
+
+- Desktop monitoring
+- System awareness
+- Activity tracking
+- Intelligent context
+
+---
+
+## Phase 8 — Multi-Agent Runtime
+
+- Planner
+- Agent orchestration
+- Task scheduling
+- Agent communication
+
+---
+
+## Phase 9 — Tool Runtime
+
+- Filesystem
+- Browser
+- Terminal
+- Git
+- Docker
+- IDE integration
+
+---
+
+## Phase 10 — Automation Engine
+
+- Workflow creation
+- Scheduling
+- Event triggers
+- Task execution
+
+---
+
+## Phase 11 — AI Desktop
+
+- AI launcher
+- Universal search
+- Smart UI
+- Desktop shell
+
+---
+
+## Phase 12 — Plugin Platform
+
+- SDK
+- Documentation
+- Marketplace
+- Community extensions
+
+---
+
+## Phase 13 — Mobile Companion
+
+- Android integration
+- Device synchronization
+- Remote execution
+
+---
+
+## Phase 14 — Jarvis OS Distribution
+
+- Installer
+- Updates
+- Recovery
+- Complete Linux distribution
+
+---
+
+# Technology Stack
+
+| Layer | Technology |
+|---------|------------|
+| Base OS | Ubuntu LTS |
+| Backend | Python |
+| System Services | Rust |
+| Frontend | React + Tauri |
+| AI Runtime | Ollama |
+| Databases | PostgreSQL, Neo4j, Qdrant |
+| Messaging | NATS |
+| API | FastAPI |
+| Containers | Docker |
+| Vision | YOLO, SAM, PaddleOCR |
+| Speech | Whisper.cpp, Piper, OpenWakeWord |
+| Automation | Playwright, PyAutoGUI |
+| Version Control | Git + GitHub |
+
+---
+
+# Design Principles
+
+- AI First
+- Privacy First
+- Local First
+- Open Source
+- Modular Architecture
+- Extensible Plugin System
+- Offline Capable
+- Security by Design
+- Human-Centered Experience
+
+---
+
+# License
+
+This project is licensed under the **MIT License**.
+
+You are free to:
+
+- Use
+- Modify
+- Distribute
+- Fork
+- Commercialize
+
+provided the original license and copyright notice are included.
+
+See the `LICENSE` file for complete details.
+
+---
+
+# Future Vision
+
+Jarvis OS is not intended to be another chatbot or desktop assistant.
+
+It aims to become a complete AI-native operating system where reasoning, memory, perception, planning, and automation are built into the core computing experience.
+
+The project is being developed as a fully open-source initiative with the goal of creating a platform that anyone can use, contribute to, and build upon.

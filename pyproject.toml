@@ -1,0 +1,51 @@
+[build-system]
+requires = ["setuptools>=70", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "jarvis-os"
+version = "0.1.0"
+description = "AI Native Operating System"
+readme = "README.md"
+requires-python = ">=3.12"
+license = "MIT"
+authors = [
+    { name = "Samyak Gajghate" }
+]
+
+dependencies = [
+    "fastapi",
+    "uvicorn[standard]",
+    "pydantic>=2.11",
+    "pydantic-settings",
+    "python-dotenv",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "pytest-asyncio",
+    "httpx",
+    "black",
+    "ruff",
+    "mypy",
+    "pre-commit",
+]
+
+[tool.black]
+line-length = 88
+target-version = ["py312"]
+
+[tool.ruff]
+line-length = 88
+target-version = "py312"
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
+
+[tool.setuptools]
+packages = ["backend"]

@@ -1,0 +1,14 @@
+fastapi
+uvicorn[standard]
+pydantic>=2.11
+pydantic-settings
+python-dotenv
+
+[dev]
+pytest
+pytest-asyncio
+httpx
+black
+ruff
+mypy
+pre-commit
