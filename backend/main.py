@@ -6,6 +6,8 @@ from backend.api.v1.health import router as health_router
 from backend.common.constants import APP_NAME, APP_VERSION
 from backend.config.logging import setup_logging
 from backend.container.dependencies import container
+from backend.api.v1.models import router as model_router
+
 
 setup_logging()
 
@@ -29,6 +31,12 @@ app.include_router(
     health_router,
     prefix="/api/v1",
     tags=["Health"],
+)
+
+app.include_router(
+    model_router,
+    prefix="/api/v1/models",
+    tags=["Models"],
 )
 
 
