@@ -9,6 +9,8 @@ from backend.container.dependencies import container
 from backend.api.v1.models import router as model_router
 from backend.api.v1.chat import router as chat_router
 from backend.api.v1.planner import router as planner_router
+from backend.api.v1.execute import router as execute_router
+
 
 
 
@@ -52,6 +54,12 @@ app.include_router(
     planner_router,
     prefix="/api/v1/planner",
     tags=["Planner"],
+)
+
+app.include_router(
+    execute_router,
+    prefix="/api/v1/execute",
+    tags=["Execution"],
 )
 
 

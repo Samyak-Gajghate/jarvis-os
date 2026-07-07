@@ -22,3 +22,8 @@ def test_health(client):
 
     assert response.status_code == 200
     assert response.json()["status"] == "healthy"
+
+
+def test_execute(client):
+    response = client.post("/api/v1/execute/", json={"goal": "Write a short introduction to artificial intelligence."})
+    assert response.status_code == 200

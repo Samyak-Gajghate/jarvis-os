@@ -4,6 +4,7 @@ from backend.runtime.model_manager.manager import ModelManager
 from backend.runtime.model_manager.providers.ollama import OllamaProvider
 from backend.ai.runtime import AIRuntime
 from backend.planner.planner import Planner
+from backend.agents.dispatcher import TaskDispatcher
 
 
 def register_core_services(container: Container) -> None:
@@ -24,3 +25,7 @@ def register_core_services(container: Container) -> None:
     #Register Planner
     planner = Planner()
     container.register("planner", planner)
+
+    #Register Dispatcher
+    dispatcher = TaskDispatcher()
+    container.register("dispatcher", dispatcher)
