@@ -3,6 +3,7 @@ from backend.runtime.runtime import Runtime
 from backend.runtime.model_manager.manager import ModelManager
 from backend.runtime.model_manager.providers.ollama import OllamaProvider
 from backend.ai.runtime import AIRuntime
+from backend.planner.planner import Planner
 
 
 def register_core_services(container: Container) -> None:
@@ -19,3 +20,7 @@ def register_core_services(container: Container) -> None:
     #Register AI
     ai_runtime = AIRuntime()
     container.register("ai_runtime", ai_runtime)
+
+    #Register Planner
+    planner = Planner()
+    container.register("planner", planner)
