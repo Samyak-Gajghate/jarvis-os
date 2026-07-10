@@ -20,6 +20,8 @@ dependencies = [
     "pydantic-settings",
     "python-dotenv",
     "httpx>=0.28",
+    "playwright>=1.54",
+    "beautifulsoup4",
 ]
 
 [project.optional-dependencies]

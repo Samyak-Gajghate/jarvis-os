@@ -14,28 +14,31 @@ class ResearchAgent(Agent):
         request: AgentRequest,
     ) -> AgentResponse:
 
-        # Import locally inside the method to avoid circular imports
+        # Keep this import local to avoid circular import errors
         from backend.container.dependencies import container
 
         browser = container.resolve("browser_tool")
         ai = container.resolve("ai_runtime")
 
-        search_results = await browser.search(
-            request.description
+        page = await browser.open(
+            "https://example.com"
         )
 
-        context = "\n".join(
-            f"{r.title}\n{r.snippet}"
-            for r in search_results
-        )
+        prompt = f"""
+Topic:
+{request.description}
+
+Page Title:
+{page.title}
+
+Content:
+{page.text}
+
+Summarize the information relevant to the topic.
+"""
 
         response = await ai.generate(
-            user_input=(
-                f"Research the following topic using the "
-                f"available search results.\n\n"
-                f"Topic:\n{request.description}\n\n"
-                f"Results:\n{context}"
-            ),
+            user_input=prompt,
             session_id=f"research-{request.task_id}",
         )
 

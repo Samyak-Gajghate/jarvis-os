@@ -4,6 +4,8 @@ pydantic>=2.11
 pydantic-settings
 python-dotenv
 httpx>=0.28
+playwright>=1.54
+beautifulsoup4
 
 [dev]
 pytest

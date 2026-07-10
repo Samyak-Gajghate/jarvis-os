@@ -11,6 +11,7 @@ from backend.api.v1.chat import router as chat_router
 from backend.api.v1.planner import router as planner_router
 from backend.api.v1.execute import router as execute_router
 from backend.api.v1.research import router as research_router
+from backend.api.v1.browser import router as browser_router
 
 
 
@@ -66,6 +67,11 @@ app.include_router(
     research_router,
     prefix="/api/v1/research",
     tags=["Research"],
+)
+app.include_router(
+    browser_router,
+    prefix="/api/v1/browser",
+    tags=["Browser"],
 )
 
 
