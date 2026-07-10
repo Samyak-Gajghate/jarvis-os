@@ -3,6 +3,7 @@ from backend.agents.schemas.request import AgentRequest
 from backend.agents.schemas.response import AgentResponse
 
 
+
 class ResearchAgent(Agent):
 
     @property
@@ -20,21 +21,35 @@ class ResearchAgent(Agent):
         browser = container.resolve("browser_tool")
         ai = container.resolve("ai_runtime")
 
-        page = await browser.open(
-            "https://example.com"
+        search = await browser.search(
+            request.description,
+            max_results=3,
+        )
+
+        pages = []
+
+        for result in search.results:
+            try:
+                page = await browser.open(result.url)
+                pages.append(page)
+            except Exception:
+                continue
+
+        context = "\n\n".join(
+            f"Title: {page.title}\n\n{page.text[:4000]}"
+            for page in pages
         )
 
         prompt = f"""
-Topic:
+Research Topic:
+
 {request.description}
 
-Page Title:
-{page.title}
+Collected Sources:
 
-Content:
-{page.text}
+{context}
 
-Summarize the information relevant to the topic.
+Provide a concise research summary using the collected information.
 """
 
         response = await ai.generate(

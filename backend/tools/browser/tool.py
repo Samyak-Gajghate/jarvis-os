@@ -13,7 +13,17 @@ class BrowserTool(Tool):
         return "browser"
 
     async def execute(self, url: str):
-        return await self.browser.open(url)
+        return await self.open(url)
 
     async def open(self, url: str):
-        return await self.execute(url)
+        return await self.browser.open(url)
+
+    async def search(
+        self,
+        query: str,
+        max_results: int = 5,
+    ):
+        return await self.browser.search(
+            query,
+            max_results,
+        )

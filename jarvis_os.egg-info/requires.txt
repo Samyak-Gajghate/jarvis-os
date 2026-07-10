@@ -6,6 +6,7 @@ python-dotenv
 httpx>=0.28
 playwright>=1.54
 beautifulsoup4
+duckduckgo-search>=8.1.1
 
 [dev]
 pytest

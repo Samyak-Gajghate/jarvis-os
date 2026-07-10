@@ -15,6 +15,7 @@ Requires-Dist: python-dotenv
 Requires-Dist: httpx>=0.28
 Requires-Dist: playwright>=1.54
 Requires-Dist: beautifulsoup4
+Requires-Dist: duckduckgo-search>=8.1.1
 Provides-Extra: dev
 Requires-Dist: pytest; extra == "dev"
 Requires-Dist: pytest-asyncio; extra == "dev"
