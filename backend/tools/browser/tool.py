@@ -1,5 +1,9 @@
+from typing import Any
+
 from backend.tools.browser.browser import Browser
-from backend.agents.interfaces.tool import Tool
+from backend.tools.interfaces.tool import Tool
+from backend.tools.schemas.request import ToolRequest
+from backend.tools.schemas.response import ToolResponse
 
 
 class BrowserTool(Tool):
@@ -12,8 +16,28 @@ class BrowserTool(Tool):
     def name(self) -> str:
         return "browser"
 
-    async def execute(self, url: str):
-        return await self.open(url)
+    async def execute(
+        self,
+        request: ToolRequest,
+    ):
+        if request.action == "search":
+            return await self.search(
+                request.parameters["query"],
+                request.parameters.get(
+                    "max_results",
+                    5,
+                ),
+            )
+
+        if request.action == "open":
+            return await self.open(
+                request.parameters["url"]
+            )
+
+        raise ValueError(
+            f"Unknown browser action: "
+            f"{request.action}"
+        )
 
     async def open(self, url: str):
         return await self.browser.open(url)

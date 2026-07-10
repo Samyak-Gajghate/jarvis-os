@@ -23,7 +23,7 @@ class OllamaProvider(ModelProvider):
         request: ModelRequest,
     ) -> ModelResponse:
 
-        async with httpx.AsyncClient(timeout=120) as client:
+        async with httpx.AsyncClient(timeout=None) as client:
 
             response = await client.post(
                 f"{settings.ollama_host}/api/generate",

@@ -13,7 +13,9 @@ from backend.api.v1.execute import router as execute_router
 from backend.api.v1.research import router as research_router
 from backend.api.v1.browser import router as browser_router
 from backend.api.v1.search import router as search_router
-
+from backend.api.v1.tools import (
+    router as tools_router,
+)
 
 
 setup_logging()
@@ -78,6 +80,11 @@ app.include_router(
     search_router,
     prefix="/api/v1/search",
     tags=["Search"],
+)
+app.include_router(
+    tools_router,
+    prefix="/api/v1/tools",
+    tags=["Tools"],
 )
 
 @app.get("/")

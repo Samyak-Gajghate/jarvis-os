@@ -1,6 +1,7 @@
 from backend.agents.interfaces.agent import Agent
 from backend.agents.schemas.request import AgentRequest
 from backend.agents.schemas.response import AgentResponse
+from backend.tools.schemas.request import ToolRequest
 
 
 
@@ -18,19 +19,32 @@ class ResearchAgent(Agent):
         # Keep this import local to avoid circular import errors
         from backend.container.dependencies import container
 
-        browser = container.resolve("browser_tool")
+        tool_runtime = container.resolve(
+            "tool_runtime"
+        )
         ai = container.resolve("ai_runtime")
 
-        search = await browser.search(
-            request.description,
-            max_results=3,
+        search = await tool_runtime.execute(
+            ToolRequest(
+                tool="browser",
+                action="search",
+                parameters={"query": request.description, "max_results": 3},
+            )
         )
 
         pages = []
 
         for result in search.results:
             try:
-                page = await browser.open(result.url)
+                page = await tool_runtime.execute(
+                    ToolRequest(
+                        tool="browser",
+                        action="open",
+                        parameters={
+                            "url": result.url,
+                        },
+                    )
+                )
                 pages.append(page)
             except Exception:
                 continue
